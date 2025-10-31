@@ -1,0 +1,182 @@
+
+> backend@0.0.1 start:dev
+> nest start --watch
+
+[2J[3J[H[[90m1:18:18 PM[0m] Starting compilation in watch mode...
+
+[[90m1:18:20 PM[0m] Found 0 errors. Watching for file changes.
+
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [NestFactory] Starting Nest application...
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] PrismaModule dependencies initialized +19ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] PassportModule dependencies initialized +0ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] ConfigHostModule dependencies initialized +11ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] JwtModule dependencies initialized +0ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] AppModule dependencies initialized +0ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] ConfigModule dependencies initialized +0ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] BusinessModule dependencies initialized +1ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] ServicesModule dependencies initialized +0ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] StaffModule dependencies initialized +0ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] ClientsModule dependencies initialized +0ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] NotificationTemplatesModule dependencies initialized +0ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] AvailabilityModule dependencies initialized +0ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] NotificationsModule dependencies initialized +0ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] BookingsModule dependencies initialized +0ms
+[Nest] 20584  - 10/29/2025, 1:18:20 PM     LOG [InstanceLoader] AuthModule dependencies initialized +0ms
+OpenAPI спецификация экспортирована в: /Users/dmitriyemelyanov/Projects/Mastro/backend/dist/openapi.json
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RoutesResolver] AppController {/api/v1}: +31ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1, GET} route +1ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/health, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RoutesResolver] AuthController {/api/v1/auth}: +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/auth/vk, POST} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/auth/login, POST} route +1ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/auth/register, POST} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/auth/profile, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RoutesResolver] BusinessController {/api/v1/businesses}: +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses, POST} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:id, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:id, PATCH} route +1ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RoutesResolver] ServicesController {/api/v1/businesses/:businessId/services}: +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/services, POST} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/services, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/services/:id, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/services/:id, PATCH} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/services/:id, DELETE} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RoutesResolver] StaffController {/api/v1/businesses/:businessId/staff}: +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/staff, POST} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/staff, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/staff/:id, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/staff/:id, PATCH} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/staff/:id, DELETE} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RoutesResolver] BookingsController {/api/v1/businesses/:businessId/bookings}: +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/bookings, POST} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/bookings, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/bookings/available-slots, GET} route +1ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/bookings/:id, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/bookings/:id, PATCH} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/bookings/:id, DELETE} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RoutesResolver] NotificationsController {/api/v1/businesses/:businessId/notifications}: +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notifications, POST} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notifications, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notifications/:id, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notifications/:id/resend, POST} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RoutesResolver] ClientsController {/api/v1/businesses/:businessId/clients}: +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/clients, POST} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/clients, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/clients/:id, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/clients/:id, PATCH} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/clients/:id, DELETE} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RoutesResolver] NotificationTemplatesController {/api/v1/businesses/:businessId/notification-templates}: +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates/variables, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates/:templateId, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates, POST} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates/:templateId, PATCH} route +1ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates/:templateId, DELETE} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates/:templateId/process, POST} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RoutesResolver] AvailabilityController {/api/v1/businesses/:businessId/availability}: +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/availability, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/availability/exceptions, GET} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/availability/exceptions, POST} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/availability/exceptions/:exceptionId, DELETE} route +0ms
+[Nest] 20584  - 10/29/2025, 1:18:21 PM     LOG [NestApplication] Nest application successfully started +11ms
+[2J[3J[H[[90m3:48:48 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m3:48:49 PM[0m] Found 0 errors. Watching for file changes.
+
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [NestFactory] Starting Nest application...
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] PrismaModule dependencies initialized +24ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] PassportModule dependencies initialized +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] ConfigHostModule dependencies initialized +15ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] JwtModule dependencies initialized +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] AppModule dependencies initialized +1ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] ConfigModule dependencies initialized +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] BusinessModule dependencies initialized +1ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] ServicesModule dependencies initialized +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] StaffModule dependencies initialized +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] ClientsModule dependencies initialized +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] NotificationTemplatesModule dependencies initialized +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] AvailabilityModule dependencies initialized +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] NotificationsModule dependencies initialized +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] BookingsModule dependencies initialized +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [InstanceLoader] AuthModule dependencies initialized +0ms
+OpenAPI спецификация экспортирована в: /Users/dmitriyemelyanov/Projects/Mastro/backend/dist/openapi.json
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RoutesResolver] AppController {/api/v1}: +41ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1, GET} route +2ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/health, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RoutesResolver] AuthController {/api/v1/auth}: +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/auth/vk, POST} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/auth/login, POST} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/auth/register, POST} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/auth/profile, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RoutesResolver] BusinessController {/api/v1/businesses}: +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses, POST} route +1ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:id, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:id, PATCH} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RoutesResolver] ServicesController {/api/v1/businesses/:businessId/services}: +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/services, POST} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/services, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/services/:id, GET} route +1ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/services/:id, PATCH} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/services/:id, DELETE} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RoutesResolver] StaffController {/api/v1/businesses/:businessId/staff}: +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/staff, POST} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/staff, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/staff/:id, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/staff/:id, PATCH} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/staff/:id, DELETE} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RoutesResolver] BookingsController {/api/v1/businesses/:businessId/bookings}: +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/bookings, POST} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/bookings, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/bookings/available-slots, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/bookings/:id, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/bookings/:id, PATCH} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/bookings/:id, DELETE} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RoutesResolver] NotificationsController {/api/v1/businesses/:businessId/notifications}: +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notifications, POST} route +1ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notifications, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notifications/:id, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notifications/:id/resend, POST} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RoutesResolver] ClientsController {/api/v1/businesses/:businessId/clients}: +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/clients, POST} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/clients, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/clients/:id, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/clients/:id, PATCH} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/clients/:id, DELETE} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RoutesResolver] NotificationTemplatesController {/api/v1/businesses/:businessId/notification-templates}: +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates/variables, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates/:templateId, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates, POST} route +2ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates/:templateId, PATCH} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates/:templateId, DELETE} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/notification-templates/:templateId/process, POST} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RoutesResolver] AvailabilityController {/api/v1/businesses/:businessId/availability}: +1ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/availability, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/availability/exceptions, GET} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/availability/exceptions, POST} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [RouterExplorer] Mapped {/api/v1/businesses/:businessId/availability/exceptions/:exceptionId, DELETE} route +0ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM     LOG [NestApplication] Nest application successfully started +13ms
+[Nest] 1667  - 10/29/2025, 3:48:50 PM   ERROR [NestApplication] Error: listen EADDRINUSE: address already in use :::3001 +2ms
+node:net:1937
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+    at listenInCluster (node:net:1994:12)
+    at Server.listen (node:net:2099:7)
+    at ExpressAdapter.listen (/Users/dmitriyemelyanov/Projects/Mastro/node_modules/@nestjs/platform-express/adapters/express-adapter.js:127:32)
+    at /Users/dmitriyemelyanov/Projects/Mastro/node_modules/@nestjs/core/nest-application.js:188:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (/Users/dmitriyemelyanov/Projects/Mastro/node_modules/@nestjs/core/nest-application.js:178:16)
+    at async bootstrap (/Users/dmitriyemelyanov/Projects/Mastro/backend/src/main.ts:49:3) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v22.14.0

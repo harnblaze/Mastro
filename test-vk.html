@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VK Auth Test</title>
+    <script src="https://vk.com/js/api/openapi.js?169"></script>
+</head>
+<body>
+    <h1>VK Auth Test</h1>
+    <button id="vk-login">Login with VK</button>
+    <div id="result"></div>
+
+    <script>
+        // Инициализация VK
+        VK.init({
+            apiId: 12345
+        });
+
+        document.getElementById('vk-login').addEventListener('click', function() {
+            console.log('Starting VK login...');
+            
+            VK.Auth.login(function(response) {
+                console.log('VK response:', response);
+                document.getElementById('result').innerHTML = 
+                    '<pre>' + JSON.stringify(response, null, 2) + '</pre>';
+            }, 'email');
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,406 @@
+/* Мобильные стили для Mastro */
+
+/* Базовые мобильные стили */
+@media (max-width: 768px) {
+  /* Уменьшаем отступы на мобильных устройствах */
+  .page-container {
+    padding: 0 !important;
+    gap: 16px !important;
+  }
+  
+  /* Мобильный контейнер страниц */
+  .main-container {
+    padding: 16px !important;
+  }
+
+  /* Адаптивные заголовки */
+  .page-title {
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+  }
+
+  .page-subtitle {
+    font-size: 16px !important;
+  }
+
+  /* Мобильная сетка */
+  .mobile-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Мобильные карточки */
+  .card-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Мобильные кнопки */
+  .mobile-button-group {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .mobile-button-group button {
+    width: 100% !important;
+  }
+
+  /* Мобильный заголовок */
+  .mobile-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+
+  /* Статистические карточки */
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Формы */
+  .form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Модальные окна */
+  .modal-content {
+    margin: 16px !important;
+    max-width: calc(100vw - 32px) !important;
+  }
+
+  /* Таблицы */
+  .table-responsive {
+    overflow-x: auto !important;
+  }
+
+  /* Навигация */
+  .nav-mobile {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: white !important;
+    border-top: 1px solid #e1e3e6 !important;
+    z-index: 1000 !important;
+  }
+}
+
+/* Планшетные стили */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Десктопные стили */
+@media (min-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* Утилиты для мобильных устройств */
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none;
+  }
+
+  .desktop-only {
+    display: block;
+  }
+}
+
+/* Адаптивные изображения */
+.responsive-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Мобильная навигация */
+.mobile-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 16px;
+  background: white;
+  border-top: 1px solid #e1e3e6;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #6d7885;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.mobile-nav-item.active {
+  color: #007aff;
+  background: #e3f2fd;
+}
+
+.mobile-nav-item:hover {
+  background: #f5f5f5;
+}
+
+/* Мобильные карточки с улучшенным отображением */
+.mobile-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.mobile-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.mobile-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1c1c1e;
+  margin: 0;
+}
+
+.mobile-card-subtitle {
+  font-size: 14px;
+  color: #6d7885;
+  margin: 4px 0 0 0;
+}
+
+/* Мобильные кнопки */
+.mobile-button {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-button-primary {
+  background: #007aff;
+  color: white;
+}
+
+.mobile-button-primary:hover {
+  background: #0056cc;
+}
+
+.mobile-button-secondary {
+  background: white;
+  color: #007aff;
+  border: 1px solid #007aff;
+}
+
+.mobile-button-secondary:hover {
+  background: #e3f2fd;
+}
+
+/* Мобильные формы */
+.mobile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-form-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1c1c1e;
+}
+
+.mobile-form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e1e3e6;
+  border-radius: 8px;
+  font-size: 16px;
+  background: white;
+  transition: border-color 0.2s ease;
+}
+
+.mobile-form-input:focus {
+  outline: none;
+  border-color: #007aff;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+/* Мобильные списки */
+.mobile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-list-item-content {
+  flex: 1;
+}
+
+.mobile-list-item-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1c1c1e;
+  margin: 0 0 4px 0;
+}
+
+.mobile-list-item-subtitle {
+  font-size: 14px;
+  color: #6d7885;
+  margin: 0;
+}
+
+/* Мобильный календарь */
+@media (max-width: 768px) {
+  .calendar-grid {
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 4px !important;
+  }
+  
+  .calendar-day {
+    min-height: 80px !important;
+    padding: 8px !important;
+    font-size: 12px !important;
+  }
+  
+  .calendar-day-number {
+    font-size: 14px !important;
+    margin-bottom: 4px !important;
+  }
+  
+  .calendar-booking {
+    font-size: 10px !important;
+    padding: 2px 4px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.2 !important;
+  }
+  
+  .calendar-navigation {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  .calendar-nav-buttons {
+    display: flex !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+  
+  .calendar-nav-buttons button {
+    flex: 1 !important;
+    margin: 0 4px !important;
+    font-size: 12px !important;
+    padding: 8px 4px !important;
+  }
+  
+  .calendar-month-title {
+    font-size: 18px !important;
+    text-align: center !important;
+    margin: 8px 0 !important;
+  }
+}
+
+/* Анимации для мобильных устройств */
+@media (prefers-reduced-motion: no-preference) {
+  .mobile-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .mobile-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobile-button {
+    transition: all 0.2s ease;
+  }
+
+  .mobile-button:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Темная тема для мобильных устройств */
+@media (prefers-color-scheme: dark) {
+  .mobile-card {
+    background: #1c1c1e;
+    color: white;
+  }
+
+  .mobile-card-title {
+    color: white;
+  }
+
+  .mobile-card-subtitle {
+    color: #8e8e93;
+  }
+
+  .mobile-form-input {
+    background: #2c2c2e;
+    border-color: #3a3a3c;
+    color: white;
+  }
+
+  .mobile-list-item {
+    background: #1c1c1e;
+  }
+
+  .mobile-list-item-title {
+    color: white;
+  }
+
+  .mobile-list-item-subtitle {
+    color: #8e8e93;
+  }
+}

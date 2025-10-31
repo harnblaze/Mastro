@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.0.1",
+    "generators": {
+      "typescript-axios": {
+        "generatorName": "typescript-axios",
+        "output": "../frontend/src/generated/api",
+        "glob": "openapi.json",
+        "additionalProperties": {
+          "npmName": "@mastro/api-client",
+          "npmVersion": "1.0.0",
+          "supportsES6": true,
+          "withNodeImports": true,
+          "withSeparateModelsAndApi": true,
+          "modelPackage": "models",
+          "apiPackage": "apis",
+          "enumPropertyNaming": "UPPERCASE"
+        }
+      }
+    }
+  }
+}

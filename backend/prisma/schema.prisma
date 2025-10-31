@@ -1,0 +1,291 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id           String   @id @default(uuid())
+  vkId         String?  @unique @map("vk_id")
+  email        String   @unique
+  role         UserRole @default(OWNER)
+  passwordHash String?  @map("password_hash")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  // Relations
+  ownedBusinesses Business[] @relation("BusinessOwner")
+  staffRoles      Staff[]    @relation("StaffUser")
+
+  @@map("users")
+}
+
+model Business {
+  id           String   @id @default(uuid())
+  ownerId      String   @map("owner_id")
+  name         String
+  address      String?
+  timezone     String   @default("Europe/Moscow")
+  phone        String?
+  email        String?
+  website      String?
+  description  String?
+  workingHours Json     @map("working_hours") // Шаблон рабочей недели
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  // Relations
+  owner              User                   @relation("BusinessOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  staff              Staff[]
+  services           Service[]
+  clients            Client[]
+  bookings           Booking[]
+  availabilityExceptions AvailabilityException[]
+  notifications      Notification[]
+  notificationTemplates NotificationTemplate[]
+
+  @@map("businesses")
+}
+
+model Staff {
+  id         String   @id @default(uuid())
+  businessId String   @map("business_id")
+  userId     String?  @map("user_id") // Опционально, если staff - это отдельный пользователь
+  name       String
+  phone      String?
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  // Relations
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  user     User?    @relation("StaffUser", fields: [userId], references: [id])
+  bookings Booking[]
+
+  // Many-to-many с услугами через отдельную таблицу
+  staffServices StaffService[]
+
+  @@map("staff")
+}
+
+model Service {
+  id              String  @id @default(uuid())
+  businessId      String  @map("business_id")
+  title           String
+  durationMinutes Int     @map("duration_minutes")
+  price           Int     // В копейках
+  bufferBefore    Int     @default(0) @map("buffer_before") // Минуты
+  bufferAfter     Int     @default(0) @map("buffer_after")  // Минуты
+  color           String? // Hex цвет для UI
+
+  // Relations
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  bookings Booking[]
+
+  // Many-to-many со staff через отдельную таблицу
+  staffServices StaffService[]
+
+  @@map("services")
+}
+
+model StaffService {
+  id        String @id @default(uuid())
+  staffId   String @map("staff_id")
+  serviceId String @map("service_id")
+
+  // Relations
+  staff   Staff   @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([staffId, serviceId])
+  @@map("staff_services")
+}
+
+model AvailabilityException {
+  id         String                    @id @default(uuid())
+  businessId String                    @map("business_id")
+  date       DateTime
+  startTime  String?                   @map("start_time") // HH:MM format
+  endTime    String?                   @map("end_time")   // HH:MM format
+  type       AvailabilityExceptionType
+  reason     String?                   // Причина исключения
+
+  // Relations
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  @@map("availability_exceptions")
+}
+
+model Client {
+  id         String   @id @default(uuid())
+  businessId String   @map("business_id")
+  name       String
+  phone      String
+  email      String?
+  notes      String?
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  // Relations
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  bookings Booking[]
+  notifications Notification[]
+
+  @@map("clients")
+}
+
+model Booking {
+  id        String      @id @default(uuid())
+  businessId String     @map("business_id")
+  serviceId String      @map("service_id")
+  staffId   String      @map("staff_id")
+  clientId  String?     @map("client_id") // Nullable для гостевых записей
+  startTs   DateTime    @map("start_ts")
+  endTs     DateTime    @map("end_ts")
+  status    BookingStatus @default(PENDING)
+  source    BookingSource @default(VK)
+  createdAt DateTime    @default(now()) @map("created_at")
+  updatedAt DateTime    @updatedAt @map("updated_at")
+
+  // Relations
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  service  Service  @relation(fields: [serviceId], references: [id])
+  staff    Staff    @relation(fields: [staffId], references: [id])
+  client   Client?  @relation(fields: [clientId], references: [id])
+
+  // Опциональные связи
+  payment         Payment?
+  notificationLogs NotificationLog[]
+  notifications   Notification[]
+
+  @@map("bookings")
+}
+
+model Payment {
+  id        String        @id @default(uuid())
+  bookingId String        @unique @map("booking_id")
+  amount    Int           // В копейках
+  status    PaymentStatus @default(PENDING)
+  provider  String?       // VK Pay, YooKassa, etc.
+  createdAt DateTime      @default(now()) @map("created_at")
+
+  // Relations
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}
+
+model NotificationLog {
+  id        String             @id @default(uuid())
+  bookingId String?            @map("booking_id") // Nullable для общих уведомлений
+  type      NotificationType
+  channel   NotificationChannel
+  status    NotificationStatus  @default(PENDING)
+  sentAt    DateTime?          @map("sent_at")
+  createdAt DateTime           @default(now()) @map("created_at")
+
+  // Relations
+  booking Booking? @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@map("notification_logs")
+}
+
+model Notification {
+  id           String                    @id @default(uuid())
+  businessId   String                    @map("business_id")
+  bookingId    String                    @map("booking_id")
+  clientId     String                    @map("client_id")
+  type         NotificationType
+  template     NotificationTemplateType
+  message      String
+  status       NotificationStatus        @default(PENDING)
+  scheduledFor DateTime                  @map("scheduled_for")
+  sentAt       DateTime?                 @map("sent_at")
+  createdAt    DateTime                  @default(now()) @map("created_at")
+
+  // Relations
+  business     Business                  @relation(fields: [businessId], references: [id])
+  booking      Booking                   @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  client       Client                    @relation(fields: [clientId], references: [id])
+
+  @@map("notifications")
+}
+
+model NotificationTemplate {
+  id         String                    @id @default(uuid())
+  businessId String                    @map("business_id")
+  type       NotificationType
+  channel    NotificationChannel
+  subject    String?                   // Для email
+  message    String
+  isActive   Boolean                   @default(true) @map("is_active")
+  createdAt  DateTime                  @default(now()) @map("created_at")
+  updatedAt  DateTime                  @updatedAt @map("updated_at")
+
+  // Relations
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  @@unique([businessId, type, channel])
+  @@map("notification_templates")
+}
+
+// Enums
+enum UserRole {
+  OWNER
+  STAFF
+}
+
+enum AvailabilityExceptionType {
+  CLOSED
+  OPEN_CUSTOM
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+  NO_SHOW
+}
+
+enum BookingSource {
+  VK
+  WEB
+  ADMIN
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  REFUNDED
+}
+
+enum NotificationType {
+  CONFIRM
+  REMINDER
+  CANCEL
+  OTHER
+  SMS
+  EMAIL
+  VK
+}
+
+enum NotificationTemplateType {
+  BOOKING_CREATED
+  BOOKING_CONFIRMED
+  BOOKING_CANCELLED
+  BOOKING_REMINDER
+}
+
+enum NotificationChannel {
+  VK
+  SMS
+  EMAIL
+}
+
+enum NotificationStatus {
+  PENDING
+  SENT
+  FAILED
+}
