@@ -247,7 +247,46 @@ npm run watch:api
 - `GET /api/v1/businesses/:id/bookings/available-slots` - Доступные слоты
 - `PATCH /api/v1/bookings/:id` - Обновление записи
 
-## 🚀 Деплой
+## 🚀 Деплой на VPS (Ubuntu)
+
+Для развертывания на VPS сервере с Ubuntu см. подробную инструкцию:
+
+- **📖 Полная документация:** [`DEPLOY.md`](./DEPLOY.md)
+- **⚡ Быстрый старт:** [`scripts/QUICK_START.md`](./scripts/QUICK_START.md)
+
+### Краткая инструкция:
+
+1. **Первоначальная настройка сервера:**
+   ```bash
+   git clone <your-repo-url> /tmp/mastro
+   cd /tmp/mastro
+   sudo bash scripts/setup-server.sh
+   ```
+
+2. **Клонирование проекта:**
+   ```bash
+   sudo git clone <your-repo-url> /var/www/mastro
+   sudo chown -R mastro:mastro /var/www/mastro
+   ```
+
+3. **Настройка переменных окружения** (см. `DEPLOY.md`)
+
+4. **Запуск PostgreSQL через Docker:**
+   ```bash
+   cd /var/www/mastro
+   sudo -u mastro docker-compose -f docker-compose.prod.yml --env-file .env.docker up -d postgres
+   ```
+
+5. **Деплой:**
+   ```bash
+   sudo su - mastro
+   cd /var/www/mastro
+   bash scripts/deploy.sh
+   ```
+
+6. **Настройка Nginx и SSL** (см. `DEPLOY.md`)
+
+### Локальный деплой (для тестирования)
 
 ### Вариант A: Backend + PostgreSQL (локально или в облаке)
 1. Поднимите PostgreSQL. Локально можно использовать `docker-compose.yml` в корне:
@@ -260,6 +299,7 @@ npm run watch:api
    NODE_ENV="production"
    PORT=3001
    JWT_SECRET="change-me"
+   CORS_ORIGINS="http://localhost:5173"
    ```
 3. Примените миграции в продакшен-режиме:
    ```bash
@@ -279,7 +319,7 @@ npm run watch:api
    ```
 
 ### Домены и CORS
-В продакшене добавьте ваш домен фронтенда в CORS (см. `backend/src/main.ts`).
+В продакшене добавьте ваш домен фронтенда в переменную `CORS_ORIGINS` в `backend/.env` (разделите несколько доменов запятыми).
 
 ### База данных
 - Dev по умолчанию: SQLite (`file:./dev.db`).

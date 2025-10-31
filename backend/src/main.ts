@@ -8,14 +8,27 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Настройка CORS
+  const allowedOrigins = process.env.CORS_ORIGINS
+    ? process.env.CORS_ORIGINS.split(',').map((origin) => origin.trim())
+    : ['http://localhost:5173', 'http://localhost:3000']
+
   app.use(
     cors({
-      origin: ['http://localhost:5173', 'http://localhost:3000'],
+      origin: (origin, callback) => {
+        // Разрешаем запросы без origin (например, мобильные приложения или Postman)
+        if (!origin) return callback(null, true)
+
+        if (allowedOrigins.includes(origin) || process.env.NODE_ENV === 'development') {
+          callback(null, true)
+        } else {
+          callback(new Error('Not allowed by CORS'))
+        }
+      },
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Content-Type', 'Authorization'],
     }),
-  );
+  )
 
   // Глобальная валидация
   app.useGlobalPipes(
