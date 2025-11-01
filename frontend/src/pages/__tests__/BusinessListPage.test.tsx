@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { screen, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import { BusinessListPage } from '../BusinessListPage'
 import { renderWithRouter } from '../../test/utils'
 
@@ -42,7 +41,6 @@ vi.mock('react-router-dom', async () => {
 import { apiService } from '../../services/api'
 
 const mockGetBusinesses = vi.mocked(apiService.getBusinesses)
-const mockCreateBusiness = vi.mocked(apiService.createBusiness)
 
 describe('BusinessListPage', () => {
 	beforeEach(() => {

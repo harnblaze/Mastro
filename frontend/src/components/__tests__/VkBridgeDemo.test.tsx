@@ -40,7 +40,7 @@ describe('VkBridgeDemo', () => {
 	})
 
 	it('отображает статус "Запущено в VK" когда запущено в VK', async () => {
-		mockBridgeSend.mockResolvedValue({ vk_user_id: '123' })
+		mockBridgeSend.mockResolvedValue({ vk_user_id: 123 } as any)
 
 		renderWithProviders(<VkBridgeDemo />)
 
@@ -50,8 +50,8 @@ describe('VkBridgeDemo', () => {
 	})
 
 	it('отображает параметры запуска когда они получены', async () => {
-		const launchParams = { vk_user_id: '123', vk_app_id: '456' }
-		mockBridgeSend.mockResolvedValue(launchParams)
+		const launchParams = { vk_user_id: 123, vk_app_id: 456, vk_is_app_user: true, vk_are_notifications_enabled: false, vk_language: 'ru', vk_ref: 'other', vk_platform: 'mobile_web', vk_ts: 1234567890, vk_access_token_settings: [], vk_is_favorite: false, sign: 'test' }
+		mockBridgeSend.mockResolvedValue(launchParams as any)
 
 		renderWithProviders(<VkBridgeDemo />)
 
@@ -61,7 +61,7 @@ describe('VkBridgeDemo', () => {
 	})
 
 	it('отображает кнопки VK авторизации и поделиться когда запущено в VK', async () => {
-		mockBridgeSend.mockResolvedValue({ vk_user_id: '123' })
+		mockBridgeSend.mockResolvedValue({ vk_user_id: 123 } as any)
 
 		renderWithProviders(<VkBridgeDemo />)
 
@@ -83,7 +83,7 @@ describe('VkBridgeDemo', () => {
 	})
 
 	it('вызывает VK авторизацию при клике на кнопку', async () => {
-		mockBridgeSend.mockResolvedValue({ vk_user_id: '123' })
+		mockBridgeSend.mockResolvedValue({ vk_user_id: 123 } as any)
 
 		renderWithProviders(<VkBridgeDemo />)
 
@@ -103,7 +103,7 @@ describe('VkBridgeDemo', () => {
 	})
 
 	it('вызывает поделиться при клике на кнопку', async () => {
-		mockBridgeSend.mockResolvedValue({ vk_user_id: '123' })
+		mockBridgeSend.mockResolvedValue({ vk_user_id: 123 } as any)
 
 		renderWithProviders(<VkBridgeDemo />)
 
@@ -123,7 +123,7 @@ describe('VkBridgeDemo', () => {
 
 	it('обрабатывает ошибки VK авторизации', async () => {
 		mockBridgeSend
-			.mockResolvedValueOnce({ vk_user_id: '123' }) // Для checkVkEnvironment
+			.mockResolvedValueOnce({ vk_user_id: 123 } as any) // Для checkVkEnvironment
 			.mockRejectedValueOnce(new Error('Auth failed')) // Для handleVkAuth
 
 		const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
@@ -146,7 +146,7 @@ describe('VkBridgeDemo', () => {
 
 	it('обрабатывает ошибки поделиться', async () => {
 		mockBridgeSend
-			.mockResolvedValueOnce({ vk_user_id: '123' }) // Для checkVkEnvironment
+			.mockResolvedValueOnce({ vk_user_id: 123 } as any) // Для checkVkEnvironment
 			.mockRejectedValueOnce(new Error('Share failed')) // Для handleShare
 
 		const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})

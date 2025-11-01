@@ -29,7 +29,7 @@ describe('ApiService', () => {
 			removeItem: vi.fn(),
 			clear: vi.fn(),
 		}
-		global.localStorage = localStorageMock as any
+		;(global as any).localStorage = localStorageMock
 
 		mockApiInstance = {
 			interceptors: {
@@ -223,8 +223,7 @@ describe('ApiService', () => {
 	describe('interceptors', () => {
 		it('добавляет токен авторизации в заголовки', async () => {
 			const { ApiService } = await import('../../services/api')
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-			const service = new ApiService()
+			new ApiService()
 
 			const requestInterceptor = mockApiInstance.interceptors.request.use
 
@@ -232,7 +231,7 @@ describe('ApiService', () => {
 
 			// Проверяем, что перехватчик был установлен
 			const interceptorFn = mockApiInstance._requestInterceptor
-			global.localStorage.getItem = vi.fn(() => 'test-token')
+			;(global as any).localStorage.getItem = vi.fn(() => 'test-token')
 
 			const config = { headers: {} }
 			const result = interceptorFn(config)
@@ -242,8 +241,7 @@ describe('ApiService', () => {
 
 		it('перенаправляет на /login при 401 ошибке', async () => {
 			const { ApiService } = await import('../../services/api')
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-			const service = new ApiService()
+			new ApiService()
 
 			const responseInterceptor = mockApiInstance.interceptors.response.use
 
@@ -259,15 +257,19 @@ describe('ApiService', () => {
 
 			const originalLocation = window.location
 			delete (window as any).location
-			window.location = { href: '' } as any
+			;(window as any).location = { href: '' }
 
 			// Обработчик ошибок отклоняет промис, поэтому нужно обработать это
 			await expect(errorHandler(error)).rejects.toEqual(error)
 
-			expect(global.localStorage.removeItem).toHaveBeenCalledWith('access_token')
-			expect(global.localStorage.removeItem).toHaveBeenCalledWith('user')
+			expect((global as any).localStorage.removeItem).toHaveBeenCalledWith('access_token')
+			expect((global as any).localStorage.removeItem).toHaveBeenCalledWith('user')
 
-			window.location = originalLocation
+			Object.defineProperty(window, 'location', {
+				value: originalLocation,
+				writable: true,
+				configurable: true,
+			})
 		})
 	})
 })

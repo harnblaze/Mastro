@@ -26,7 +26,7 @@ describe('AuthContext', () => {
 			removeItem: vi.fn(),
 			clear: vi.fn(),
 		}
-		global.localStorage = localStorageMock as any
+		;(global as any).localStorage = localStorageMock
 	})
 
 	afterEach(() => {
@@ -46,7 +46,7 @@ describe('AuthContext', () => {
 
 	it('инициализируется и заканчивает загрузку', async () => {
 		mockApiService.getProfile.mockResolvedValue(null)
-		global.localStorage.getItem = vi.fn(() => null)
+		;(global as any).localStorage.getItem = vi.fn(() => null)
 
 		const { result } = renderHook(() => useAuth(), {
 			wrapper: AuthProvider,
@@ -67,7 +67,7 @@ describe('AuthContext', () => {
 			role: 'OWNER',
 		}
 
-		global.localStorage.getItem = vi.fn((key: string) => {
+		;(global as any).localStorage.getItem = vi.fn((key: string) => {
 			if (key === 'access_token') return 'valid-token'
 			if (key === 'user') return JSON.stringify(mockUser)
 			return null
@@ -92,12 +92,12 @@ describe('AuthContext', () => {
 
 	it('очищает localStorage при невалидном токене', async () => {
 		const removeItemSpy = vi.fn()
-		global.localStorage.getItem = vi.fn((key: string) => {
+		;(global as any).localStorage.getItem = vi.fn((key: string) => {
 			if (key === 'access_token') return 'invalid-token'
 			if (key === 'user') return JSON.stringify({ id: '1' })
 			return null
 		})
-		global.localStorage.removeItem = removeItemSpy
+		;(global as any).localStorage.removeItem = removeItemSpy
 
 		mockApiService.getProfile.mockRejectedValue(new Error('Unauthorized'))
 
@@ -126,9 +126,9 @@ describe('AuthContext', () => {
 		}
 
 		mockApiService.login.mockResolvedValue(mockAuthResponse)
-		global.localStorage.getItem = vi.fn(() => null)
+		;(global as any).localStorage.getItem = vi.fn(() => null)
 		const setItemSpy = vi.fn()
-		global.localStorage.setItem = setItemSpy
+		;(global as any).localStorage.setItem = setItemSpy
 
 		const { result } = renderHook(() => useAuth(), {
 			wrapper: AuthProvider,
@@ -163,9 +163,9 @@ describe('AuthContext', () => {
 		}
 
 		mockApiService.register.mockResolvedValue(mockAuthResponse)
-		global.localStorage.getItem = vi.fn(() => null)
+		;(global as any).localStorage.getItem = vi.fn(() => null)
 		const setItemSpy = vi.fn()
-		global.localStorage.setItem = setItemSpy
+		;(global as any).localStorage.setItem = setItemSpy
 
 		const { result } = renderHook(() => useAuth(), {
 			wrapper: AuthProvider,
@@ -199,9 +199,9 @@ describe('AuthContext', () => {
 		}
 
 		mockApiService.vkAuth.mockResolvedValue(mockAuthResponse)
-		global.localStorage.getItem = vi.fn(() => null)
+		;(global as any).localStorage.getItem = vi.fn(() => null)
 		const setItemSpy = vi.fn()
-		global.localStorage.setItem = setItemSpy
+		;(global as any).localStorage.setItem = setItemSpy
 
 		const { result } = renderHook(() => useAuth(), {
 			wrapper: AuthProvider,
@@ -227,13 +227,13 @@ describe('AuthContext', () => {
 			role: 'OWNER',
 		}
 
-		global.localStorage.getItem = vi.fn((key: string) => {
+		;(global as any).localStorage.getItem = vi.fn((key: string) => {
 			if (key === 'access_token') return 'token'
 			if (key === 'user') return JSON.stringify(mockUser)
 			return null
 		})
 		const removeItemSpy = vi.fn()
-		global.localStorage.removeItem = removeItemSpy
+		;(global as any).localStorage.removeItem = removeItemSpy
 
 		mockApiService.getProfile.mockResolvedValue(mockUser)
 

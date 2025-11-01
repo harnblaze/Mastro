@@ -16,7 +16,6 @@ import {
 } from '@vkontakte/vkui';
 import type { Business } from '../types';
 import { apiService } from '../services/api';
-import { Modal } from '../components/Modal';
 import { LoadingScreen } from '../components/LoadingScreen';
 
 // Стили

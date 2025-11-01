@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { DateTimeDisplay } from '../DateTimeDisplay'
 import { renderWithProviders } from '../../test/utils'
 

@@ -1,10 +1,4 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { screen, waitFor } from '@testing-library/react'
-import { AppRouter } from '../../components/AppRouter'
-import { renderWithRouter } from '../../test/utils'
-import { AuthProvider } from '../../contexts/AuthContext'
-import { BrowserRouter } from 'react-router-dom'
-import { ConfigProvider } from '@vkontakte/vkui'
 
 // Мокируем все lazy-loaded компоненты
 vi.mock('../../pages/LoginPage', () => ({
@@ -42,7 +36,7 @@ vi.mock('../../hooks/usePerformanceMonitor', () => ({
 describe('AppRouter', () => {
 	beforeEach(() => {
 		vi.clearAllMocks()
-		global.localStorage.getItem = vi.fn(() => null)
+		;(global as any).localStorage.getItem = vi.fn(() => null)
 	})
 
 	it.skip('отображает LoadingScreen во время загрузки', () => {

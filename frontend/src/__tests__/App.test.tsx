@@ -1,5 +1,4 @@
 import { describe, it, expect, vi } from 'vitest'
-import { screen } from '@testing-library/react'
 import App from '../App'
 import { renderWithRouter } from '../test/utils'
 import { AuthProvider } from '../contexts/AuthContext'

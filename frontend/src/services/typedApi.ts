@@ -1,8 +1,5 @@
 import { apiClient } from '../generated/api';
 import type { 
-  VkAuthDto, 
-  LoginDto, 
-  CreateUserDto,
   CreateBusinessDto,
   UpdateBusinessDto,
   CreateServiceDto,
@@ -16,7 +13,6 @@ import type {
   CreateNotificationDto,
   CreateNotificationTemplateDto,
   UpdateNotificationTemplateDto,
-  CreateAvailabilityExceptionDto
 } from '../generated/api/models';
 
 // Типизированный API сервис на основе сгенерированного клиента
@@ -65,7 +61,7 @@ export class TypedApiService {
   }
 
   async getService(businessId: string, id: string) {
-    return apiClient.ServicesController_findOne(id);
+    return apiClient.ServicesController_findOne(businessId, id);
   }
 
   async updateService(businessId: string, id: string, data: UpdateServiceDto) {
@@ -86,7 +82,7 @@ export class TypedApiService {
   }
 
   async getStaffMember(businessId: string, id: string) {
-    return apiClient.StaffController_findOne(id);
+    return apiClient.StaffController_findOne(businessId, id);
   }
 
   async updateStaff(businessId: string, id: string, data: UpdateStaffDto) {
@@ -98,8 +94,8 @@ export class TypedApiService {
   }
 
   // Bookings методы
-  async getBookings(businessId: string, params?: any) {
-    return apiClient.BookingsController_findAll(businessId, { params });
+  async getBookings(businessId: string, params?: { from?: any; to?: any; staffId?: any; status?: any }) {
+    return apiClient.BookingsController_findAll(businessId, params);
   }
 
   async createBooking(businessId: string, data: CreateBookingDto) {
@@ -108,12 +104,12 @@ export class TypedApiService {
 
   async getAvailableSlots(businessId: string, serviceId: string, staffId: string, date: string) {
     return apiClient.BookingsController_getAvailableSlots(businessId, { 
-      params: { serviceId, staffId, date } 
+      serviceId, staffId, date 
     });
   }
 
   async getBooking(businessId: string, id: string) {
-    return apiClient.BookingsController_findOne(id);
+    return apiClient.BookingsController_findOne(businessId, id);
   }
 
   async updateBooking(businessId: string, id: string, data: UpdateBookingDto) {
@@ -134,7 +130,7 @@ export class TypedApiService {
   }
 
   async getClient(businessId: string, id: string) {
-    return apiClient.ClientsController_findOne(id);
+    return apiClient.ClientsController_findOne(businessId, id);
   }
 
   async updateClient(businessId: string, id: string, data: UpdateClientDto) {
@@ -146,8 +142,8 @@ export class TypedApiService {
   }
 
   // Notifications методы
-  async getNotifications(businessId: string, params?: any) {
-    return apiClient.NotificationsController_findAll(businessId, { params });
+  async getNotifications(businessId: string, params?: { bookingId?: any; type?: any; status?: any }) {
+    return apiClient.NotificationsController_findAll(businessId, params);
   }
 
   async createNotification(businessId: string, data: CreateNotificationDto) {
@@ -155,7 +151,7 @@ export class TypedApiService {
   }
 
   async getNotification(businessId: string, id: string) {
-    return apiClient.NotificationsController_findOne(id);
+    return apiClient.NotificationsController_findOne(businessId, id);
   }
 
   async resendNotification(businessId: string, id: string) {
@@ -164,14 +160,14 @@ export class TypedApiService {
 
   // Availability методы
   async getAvailability(businessId: string, params: { date: string; serviceId?: string; staffId?: string }) {
-    return apiClient.AvailabilityController_getAvailability(businessId, { params });
+    return apiClient.AvailabilityController_getAvailability(businessId, params);
   }
 
   async getAvailabilityExceptions(businessId: string, params?: { from?: string; to?: string }) {
-    return apiClient.AvailabilityController_getAvailabilityExceptions(businessId, { params });
+    return apiClient.AvailabilityController_getAvailabilityExceptions(businessId, params);
   }
 
-  async createAvailabilityException(businessId: string, data: CreateAvailabilityExceptionDto) {
+  async createAvailabilityException(businessId: string, data: any) {
     return apiClient.AvailabilityController_createAvailabilityException(businessId, data);
   }
 
@@ -185,7 +181,7 @@ export class TypedApiService {
   }
 
   async getNotificationTemplate(businessId: string, templateId: string) {
-    return apiClient.NotificationTemplatesController_findOne(templateId);
+    return apiClient.NotificationTemplatesController_findOne(businessId, templateId);
   }
 
   async createNotificationTemplate(businessId: string, data: CreateNotificationTemplateDto) {

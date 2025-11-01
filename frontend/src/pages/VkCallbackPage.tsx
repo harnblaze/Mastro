@@ -86,7 +86,7 @@ export const VkCallbackPage: React.FC = () => {
       minHeight: '100vh',
       padding: '20px'
     }}>
-      <Spinner size="large" />
+      <Spinner size="l" />
       <Text style={{ marginTop: '20px', textAlign: 'center' }}>
         Обработка авторизации...
       </Text>

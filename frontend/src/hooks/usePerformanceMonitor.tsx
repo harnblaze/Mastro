@@ -1,14 +1,6 @@
 import { useEffect, useRef } from 'react';
 import React from 'react';
 
-// Интерфейс для метрик производительности (используется для типизации)
-interface PerformanceMetrics {
-  componentName: string;
-  renderTime: number;
-  mountTime?: number;
-  updateCount: number;
-  lastRenderTime: number;
-}
 
 // Хук для мониторинга производительности компонентов
 export const usePerformanceMonitor = (componentName: string, enabled: boolean = true) => {

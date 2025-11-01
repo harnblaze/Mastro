@@ -1,8 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { screen, waitFor } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { VkCallbackPage } from '../VkCallbackPage'
 import { renderWithRouter } from '../../test/utils'
-import { act } from '@testing-library/react'
 
 // Мокируем useAuth
 const mockVkAuth = vi.fn()
@@ -64,7 +63,11 @@ describe('VkCallbackPage', () => {
 
 	afterEach(() => {
 		vi.useRealTimers()
-		window.location = originalLocation
+		Object.defineProperty(window, 'location', {
+			value: originalLocation,
+			writable: true,
+			configurable: true,
+		})
 	})
 
 	it('отображает спиннер и текст обработки', () => {

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { StatCard, StatGrid } from '../StatCard'
 import { renderWithProviders } from '../../test/utils'
 
@@ -50,7 +50,7 @@ describe('StatCard', () => {
 		renderWithProviders(
 			<StatCard title="Тест" value="100" onClick={handleClick} />,
 		)
-		const card = screen.getByText('100').closest('.vkuiCard')
+		const card = screen.getByText('100').closest('.vkuiCard') as HTMLElement | null
 		if (card) {
 			card.click()
 			expect(handleClick).toHaveBeenCalledTimes(1)
